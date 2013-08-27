@@ -1,0 +1,47 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+	<!-- Inherit from Sonatype OSS Parent POM.  Protege libraries are hosted on Sonatype OSSRH (OSS Repository Hosting Service). -->
+	<parent>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>7</version>
+	</parent>
+    
+    <groupId>edu.stanford.protege</groupId>
+    <artifactId>aggregator</artifactId>
+    <packaging>pom</packaging>
+
+	<!-- Increment version number each time list of modules changes. -->
+    <version>1</version>
+
+    <name>Protege Desktop Aggregator</name>
+	<description>Protege Desktop Aggregator POM</description>
+
+	<modules>
+		<module>org.protege.common</module>
+		<module>org.protege.editor.core.application</module>
+		<module>org.protege.editor.owl</module>
+		<module>protege-base</module>
+		<module>protege-distribution</module>
+		<module>protege-parent</module>
+	</modules>
+	
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>2.4</version>
+					<configuration>
+						<descriptors>
+							<descriptor>protege-distribution/src/main/assembly/protege-as-directory.xml</descriptor>
+							<descriptor>protege-distribution/src/main/assembly/protege-as-app.xml</descriptor>
+						</descriptors>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>
